@@ -3,7 +3,7 @@ package public
 import (
 	"encoding/json"
 
-	"github.com/iaping/go-okx/ws"
+	"github.com/JamesMike-a11y/go-okx/ws"
 )
 
 type HandlerTrades func(EventTrades)

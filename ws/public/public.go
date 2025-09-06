@@ -1,7 +1,7 @@
 package public
 
 import (
-	"github.com/iaping/go-okx/ws"
+	"github.com/JamesMike-a11y/go-okx/ws"
 )
 
 type Public struct {

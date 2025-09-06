@@ -1,9 +1,9 @@
 package private
 
 import (
+	"github.com/JamesMike-a11y/go-okx/common"
+	"github.com/JamesMike-a11y/go-okx/ws"
 	"github.com/gorilla/websocket"
-	"github.com/iaping/go-okx/common"
-	"github.com/iaping/go-okx/ws"
 )
 
 type Private struct {

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/JamesMike-a11y/go-okx/common"
+	"github.com/JamesMike-a11y/go-okx/rest/api"
 	"github.com/google/go-querystring/query"
-	"github.com/iaping/go-okx/common"
-	"github.com/iaping/go-okx/rest/api"
 	"github.com/valyala/fasthttp"
 )
 

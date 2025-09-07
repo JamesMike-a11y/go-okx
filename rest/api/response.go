@@ -9,9 +9,9 @@ type IResponse interface {
 }
 
 type Response struct {
-	Code    string      `json:"code"`
-	Message string      `json:"msg"`
-	Data    interface{} `json:"data"`
+	Code    string          `json:"code"`
+	Message string          `json:"msg"`
+	Data    json.RawMessage `json:"data"`
 }
 
 func (r Response) GetCode() string {

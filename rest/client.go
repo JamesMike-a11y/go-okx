@@ -9,11 +9,9 @@ import (
 	"github.com/JamesMike-a11y/go-okx/rest/api"
 	"github.com/google/go-querystring/query"
 	"github.com/valyala/fasthttp"
-	"go.uber.org/zap"
 )
 
 var (
-	logger                *zap.Logger
 	DefaultFastHttpClient = &fasthttp.Client{
 		Name:                "go-okx",
 		MaxConnsPerHost:     16,
@@ -22,10 +20,6 @@ var (
 		WriteTimeout:        10 * time.Second,
 	}
 )
-
-func RegisterLogger(l *zap.Logger) {
-	logger = l
-}
 
 type Client struct {
 	Host string
@@ -60,8 +54,8 @@ func (c *Client) Do(req api.IRequest, resp api.IResponse) error {
 		return err
 	}
 
-	if !resp.IsOk() && logger != nil {
-		logger.Error("RequestFail", zap.Any("RawData", string(data)))
+	if !resp.IsOk() {
+		return fmt.Errorf("%s", string(data))
 	}
 
 	return nil

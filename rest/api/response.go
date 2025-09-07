@@ -1,7 +1,5 @@
 package api
 
-import "encoding/json"
-
 type IResponse interface {
 	GetCode() string
 	GetMessage() string
@@ -9,9 +7,8 @@ type IResponse interface {
 }
 
 type Response struct {
-	Code    string          `json:"code"`
-	Message string          `json:"msg"`
-	Data    json.RawMessage `json:"data"`
+	Code    string `json:"code"`
+	Message string `json:"msg"`
 }
 
 func (r Response) GetCode() string {
@@ -19,8 +16,7 @@ func (r Response) GetCode() string {
 }
 
 func (r Response) GetMessage() string {
-	data, _ := json.Marshal(r)
-	return string(data)
+	return r.Message
 }
 
 func (r Response) IsOk() bool {

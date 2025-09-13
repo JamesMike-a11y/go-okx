@@ -45,10 +45,22 @@ func New(host string, auth common.Auth, c *fasthttp.Client) *Client {
 
 // do request
 func (c *Client) Do(req api.IRequest, resp api.IResponse) error {
-	data, err := c.do(req)
-	if err != nil {
+	fastReq := c.newRequest(req)
+	fastResp := fasthttp.AcquireResponse()
+	defer func() {
+		fasthttp.ReleaseRequest(fastReq)
+		fasthttp.ReleaseResponse(fastResp)
+	}()
+
+	if err := c.C.Do(fastReq, fastResp); err != nil {
 		return err
 	}
+
+	if fastResp.StatusCode() != fasthttp.StatusOK {
+		return fmt.Errorf("http status code:%d, desc:%s", fastResp.StatusCode(), string(fastResp.Body()))
+	}
+
+	data := fastResp.Body()
 
 	if err := json.Unmarshal(data, &resp); err != nil {
 		return err

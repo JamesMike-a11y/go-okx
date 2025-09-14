@@ -2,7 +2,7 @@ package market
 
 import "github.com/JamesMike-a11y/go-okx/rest/api"
 
-func NewGetInstruments(param *GetBooksParam) (api.IRequest, api.IResponse) {
+func NewGetInstruments(param *GetInstrumentsParam) (api.IRequest, api.IResponse) {
 	return &api.Request{
 		Path:   "/api/v5/public/instruments",
 		Method: api.MethodGet,
@@ -10,7 +10,7 @@ func NewGetInstruments(param *GetBooksParam) (api.IRequest, api.IResponse) {
 	}, &GetBooksResponse{}
 }
 
-type GetInstruments struct {
+type GetInstrumentsParam struct {
 	InstId     string `url:"instId"`
 	InstType   string `url:"instType"`
 	InstFamily string `url:"instFamily"`

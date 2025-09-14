@@ -7,7 +7,7 @@ func NewGetInstruments(param *GetInstrumentsParam) (api.IRequest, api.IResponse)
 		Path:   "/api/v5/public/instruments",
 		Method: api.MethodGet,
 		Param:  param,
-	}, &GetBooksResponse{}
+	}, &GetInstrumentsResponse{}
 }
 
 type GetInstrumentsParam struct {
